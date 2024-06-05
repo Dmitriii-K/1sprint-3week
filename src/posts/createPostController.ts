@@ -15,6 +15,7 @@ export const createPostController = (
     content: req.body.content,
     blogId: req.body.blogId,
     blogName: blog.name,
+    createdAd: new Date(),
   };
 
   dbPost.posts.push(newPost);

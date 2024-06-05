@@ -11,6 +11,8 @@ export const createBlogController = (
     name: req.body.name,
     description: req.body.description,
     websiteUrl: req.body.websiteUrl,
+    createdAd: new Date(),
+    isMembershi: false,
   };
 
   dbBlog.blogs.push(newBlog);
