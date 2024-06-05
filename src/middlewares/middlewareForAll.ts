@@ -1,7 +1,7 @@
 import { Router, Response, Request, NextFunction } from "express";
 import { body, validationResult } from "express-validator";
-import { dbBlog } from "../../db/dbBlog";
-import { SETTINGS } from "../../settings";
+import { dbBlog } from "../db/db";
+import { SETTINGS } from "../settings";
 
 const urlPattern =
   /^https:\/\/([a-zA-Z0-9_-]+\.)+[a-zA-Z0-9_-]+(\/[a-zA-Z0-9_-]+)*\/?$/;

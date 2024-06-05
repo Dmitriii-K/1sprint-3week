@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { Router } from "express";
 import { dbPost } from "./db/dbPost";
-import { dbBlog } from "./db/dbBlog";
+import { dbBlog } from "./db/db";
 
 export const deleteRouter = Router();
 

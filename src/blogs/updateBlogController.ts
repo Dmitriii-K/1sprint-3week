@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { dbBlog } from "../db/dbBlog";
+import { dbBlog } from "../db/db";
 import {
   BlogInputModel,
   BlogViewModel,

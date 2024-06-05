@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { dbPost } from "../db/dbPost";
+import { dbPost } from "../db/db";
 
 export const deletePostController = (req: Request, res: Response<any>) => {
   const id = req.params.id;

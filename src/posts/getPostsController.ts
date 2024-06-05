@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { dbPost } from "../db/dbPost";
+import { dbPost } from "../db/db";
 import { OutputErrorsType } from "../input-output-types/output-errors-type";
 
 export const getPostsController = (

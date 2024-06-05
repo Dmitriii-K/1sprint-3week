@@ -8,7 +8,7 @@ import {
   postInputValidation,
   inputCheckErrorsMiddleware,
   authMiddleware,
-} from "./middlewaresPosts/middlewareForCreatePost";
+} from "../middlewares/middlewareForAll";
 
 export const postRouter = Router();
 

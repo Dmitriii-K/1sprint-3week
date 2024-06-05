@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { dbPost } from "../db/dbPost";
-import { dbBlog } from "../db/dbBlog";
+import { dbPost } from "../db/db";
+import { dbBlog } from "../db/db";
 import { PostInputModel } from "../input-output-types/posts-type";
 
 export const createPostController = (

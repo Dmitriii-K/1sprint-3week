@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { dbPost } from "../db/dbPost";
+import { dbPost } from "../db/db";
 
 export const findPostController = (req: Request, res: Response) => {
   const post = dbPost.posts.find((p) => p.id === req.params.id);

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { dbBlog } from "../db/dbBlog";
+import { dbBlog } from "../db/db";
 
 export const findBlogController = (req: Request, res: Response) => {
   const blog = dbBlog.blogs.find((b) => b.id === req.params.id);

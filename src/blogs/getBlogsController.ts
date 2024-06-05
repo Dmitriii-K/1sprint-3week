@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { dbBlog } from "../db/dbBlog";
+import { dbBlog } from "../db/db";
 import { OutputErrorsType } from "../input-output-types/output-errors-type";
 
 export const getBlogsController = (

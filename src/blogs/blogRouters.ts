@@ -8,7 +8,7 @@ import {
   authMiddleware,
   blogInputValidation,
   inputCheckErrorsMiddleware,
-} from ".././posts/middlewaresPosts/middlewareForCreatePost";
+} from "../middlewares/middlewareForAll";
 
 export const blogRouter = Router();
 
