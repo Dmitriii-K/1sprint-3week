@@ -6,12 +6,12 @@ import {
 } from "../input-output-types/blogs-type";
 import { OutputErrorsType } from "../input-output-types/output-errors-type";
 
-export const updateBlogController = (
+export const updateBlogController = async (
   req: Request<any, any, BlogInputModel>,
   res: Response<BlogViewModel | OutputErrorsType>
 ) => {
   let updateBlog;
-  const blog = dbBlog.blogs.find((b) => b.id === req.params.id);
+  const blog = await dbBlog.blogs.find((b) => b.id === req.params.id);
   if (!blog) {
     res.sendStatus(404);
   } else {

@@ -2,11 +2,11 @@ import { Request, Response } from "express";
 import { dbBlog } from "../db/db";
 import { BlogInputModel } from "../input-output-types/blogs-type";
 
-export const createBlogController = (
+export const createBlogController = async (
   req: Request<any, any, BlogInputModel>,
   res: Response<any>
 ) => {
-  const newBlog = {
+  const newBlog = await {
     id: Date.now().toString(),
     name: req.body.name,
     description: req.body.description,

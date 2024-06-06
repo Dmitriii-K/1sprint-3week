@@ -6,12 +6,12 @@ import {
 } from "../input-output-types/posts-type";
 import { OutputErrorsType } from "../input-output-types/output-errors-type";
 
-export const updatePostController = (
+export const updatePostController = async (
   req: Request<any, any, PostInputModel>,
   res: Response<PostViewModel | OutputErrorsType>
 ) => {
   let updatePost;
-  const post = dbPost.posts.find((p) => p.id === req.params.id);
+  const post = await dbPost.posts.find((p) => p.id === req.params.id);
   if (!post) {
     res.sendStatus(404);
   } else {
