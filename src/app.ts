@@ -5,7 +5,7 @@ import { MongoClient } from "mongodb";
 import { deleteRouter } from "./deleteAllData";
 import { blogRouter } from "./blogs/blogRouters";
 import { postRouter } from "./posts/postsRouters";
-import { connectToDB } from "./db/mongo-db";
+import { connectDB } from "./db/mongo-db";
 
 export const app = express();
 app.use(express.json());
@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
 });
 
 const start = async () => {
-  if (!(await connectToDB(SETTINGS.MONGO_URL))) {
+  if (!(await connectDB(SETTINGS.MONGO_URL))) {
     console.log("NOT CONNECT TO DB");
     process.exit(1);
   }
