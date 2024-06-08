@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
 });
 
 const start = async () => {
-  if (!(await connectDB(SETTINGS.MONGO_URL))) {
+  if (!(await connectDB())) {
     console.log("NOT CONNECT TO DB");
     process.exit(1);
   }

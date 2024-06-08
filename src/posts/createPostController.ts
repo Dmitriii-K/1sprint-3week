@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { dbPost } from "../db/db";
 import { dbBlog } from "../db/db";
-import { PostInputModel } from "../input-output-types/posts-type";
+import { PostInputModel, PostDbType } from "../input-output-types/posts-type";
 import { postCollection } from "../db/mongo-db";
 
 export const createPostController = async (
@@ -9,14 +9,14 @@ export const createPostController = async (
   res: Response<any>
 ) => {
   const blog = await dbBlog.blogs.find((blog) => blog.id === req.body.blogId);
-  const newPost = {
-    id: Date.now().toString(),
+  const newPost: PostDbType = {
+    // id: Date.now().toString(),
     title: req.body.title,
     shortDescription: req.body.shortDescription,
     content: req.body.content,
     blogId: req.body.blogId,
     blogName: blog.name,
-    createdAd: new Date(),
+    createdAt: new Date().toISOString(),
   };
   await postCollection.insertOne(newPost);
   // dbPost.posts.push(newPost);

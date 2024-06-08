@@ -1,6 +1,6 @@
 import { SETTINGS } from "../settings";
-import { PostViewModel } from "../input-output-types/posts-type";
-import { BlogViewModel } from "../input-output-types/blogs-type";
+import { PostViewModel, PostDbType } from "../input-output-types/posts-type";
+import { BlogViewModel, BlogDbType } from "../input-output-types/blogs-type";
 import { Collection, Db, MongoClient, ObjectId } from "mongodb";
 // ...
 
@@ -9,10 +9,12 @@ let client: MongoClient = new MongoClient(SETTINGS.MONGO_URL);
 export let db: Db = client.db(SETTINGS.DB_NAME);
 
 // получение доступа к коллекциям
-export let blogCollection: Collection<BlogViewModel> =
-  db.collection<BlogViewModel>(SETTINGS.BLOG_COLLECTION_NAME);
-export let postCollection: Collection<PostViewModel> =
-  db.collection<PostViewModel>(SETTINGS.POST_COLLECTION_NAME);
+export let blogCollection: Collection<BlogDbType> = db.collection<BlogDbType>(
+  SETTINGS.BLOG_COLLECTION_NAME
+);
+export let postCollection: Collection<PostDbType> = db.collection<PostDbType>(
+  SETTINGS.POST_COLLECTION_NAME
+);
 
 // проверка подключения к бд
 export const connectDB = async () => {

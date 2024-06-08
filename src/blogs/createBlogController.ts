@@ -3,6 +3,7 @@ import { dbBlog } from "../db/db";
 import {
   BlogInputModel,
   BlogViewModel,
+  BlogDbType,
 } from "../input-output-types/blogs-type";
 import { blogCollection } from "../db/mongo-db";
 
@@ -11,12 +12,12 @@ export const createBlogController = async (
   res: Response<any>
 ) => {
   const newBlog = {
-    id: Date.now().toString(),
+    // id: Date.now().toString(),
     name: req.body.name,
     description: req.body.description,
     websiteUrl: req.body.websiteUrl,
-    createdAd: new Date(),
-    isMembershi: false,
+    createdAt: new Date().toISOString(),
+    isMembership: false,
   };
   await blogCollection.insertOne(newBlog);
   // dbBlog.blogs.push(newBlog);
