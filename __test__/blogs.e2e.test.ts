@@ -3,16 +3,15 @@ import { req } from "./test-helpers";
 // import {dataset1} from './datasets'
 import { SETTINGS } from "../src/settings";
 
-import { req } from "./helpers/test-helpers";
 import { db, setDB } from "../src/db/db";
-import { SETTINGS } from "../src/settings";
-import { BlogInputModel } from "../src/input-output-types/blogs-types";
+import { BlogInputModel } from "../src/input-output-types/blogs-type";
 import { codedAuth, createString, dataset1 } from "./helpers/datasets";
 
 describe("/blogs", () => {
-  // beforeAll(async () => { // очистка базы данных перед началом тестирования
-  //     setDB()
-  // })
+  beforeAll(async () => {
+    // очистка базы данных перед началом тестирования
+    setDB();
+  });
 
   it("should create", async () => {
     setDB();

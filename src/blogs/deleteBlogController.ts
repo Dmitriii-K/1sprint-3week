@@ -1,13 +1,15 @@
 import { Request, Response } from "express";
 import { dbBlog } from "../db/db";
 import { blogCollection } from "../db/mongo-db";
+import { blogsMap } from "./getBlogsController";
+import { WithId, ObjectId } from "mongodb";
 
 export const deleteBlogController = async (
   req: Request,
   res: Response<any>
 ) => {
-  const id = req.params.id;
-  const deleteBlog = await blogCollection.deleteOne({ id: id });
+  const id = new ObjectId(req.params.id);
+  const deleteBlog = await blogCollection.deleteOne({ _id: id });
   if (deleteBlog.deletedCount === 1) {
     res.sendStatus(204);
   } else {

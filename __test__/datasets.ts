@@ -4,9 +4,6 @@ import { BlogViewModel } from "../src/input-output-types/blogs-type";
 import { PostViewModel } from "../src/input-output-types/posts-type";
 import { authMiddleware } from "../src/middlewares/middlewareForAll";
 
-// готовые данные для переиспользования в тестах
-export const codedAuth = authMiddleware(SETTINGS.ADMIN);
-
 export const video1: any /*VideoDBType*/ = {
   id: Date.now() + Math.random(),
   title: "t" + Date.now() + Math.random(),

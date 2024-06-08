@@ -18,7 +18,11 @@ export const createPostController = async (
     blogName: blog.name,
     createdAt: new Date().toISOString(),
   };
-  await postCollection.insertOne(newPost);
+  const cp = await postCollection.insertOne(newPost);
+  const z = {
+    ...newPost,
+    id: cp.insertedId,
+  };
   // dbPost.posts.push(newPost);
-  res.status(201).json(newPost);
+  res.status(201).json(z);
 };

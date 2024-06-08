@@ -19,7 +19,12 @@ export const createBlogController = async (
     createdAt: new Date().toISOString(),
     isMembership: false,
   };
-  await blogCollection.insertOne(newBlog);
+  const nb = await blogCollection.insertOne(newBlog);
+  const x = {
+    ...newBlog,
+    id: nb.insertedId,
+  };
+
   // dbBlog.blogs.push(newBlog);
-  res.status(201).json(newBlog);
+  res.status(201).json(x);
 };

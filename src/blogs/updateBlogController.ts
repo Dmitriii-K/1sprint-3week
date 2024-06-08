@@ -6,15 +6,17 @@ import {
 } from "../input-output-types/blogs-type";
 import { OutputErrorsType } from "../input-output-types/output-errors-type";
 import { blogCollection } from "../db/mongo-db";
+import { blogsMap } from "./getBlogsController";
+import { WithId, ObjectId } from "mongodb";
 
 export const updateBlogController = async (
   req: Request<any, any, BlogInputModel>,
   res: Response<BlogViewModel | OutputErrorsType>
 ) => {
   // let updateBlog;
-  const id = req.params.id;
+  const id = new ObjectId(req.params.id);
   const blog = await blogCollection.updateOne(
-    { id: id },
+    { _id: id },
     {
       $set: {
         name: req.body.name,

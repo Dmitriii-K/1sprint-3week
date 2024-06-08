@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
   res.status(200).json("WORKING");
 });
 
-const start = async () => {
+export const start = async () => {
   if (!(await connectDB())) {
     console.log("NOT CONNECT TO DB");
     process.exit(1);
@@ -23,7 +23,6 @@ const start = async () => {
     console.log("...server started in port " + SETTINGS.PORT);
   });
 };
-start();
 
 app.use(SETTINGS.PATH.BLOGS, blogRouter);
 app.use(SETTINGS.PATH.POSTS, postRouter);

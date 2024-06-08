@@ -6,15 +6,16 @@ import {
 } from "../input-output-types/posts-type";
 import { OutputErrorsType } from "../input-output-types/output-errors-type";
 import { postCollection } from "../db/mongo-db";
+import { WithId, ObjectId } from "mongodb";
 
 export const updatePostController = async (
   req: Request<any, any, PostInputModel>,
   res: Response<PostViewModel | OutputErrorsType>
 ) => {
   // let updatePost;
-  const id = req.params.id;
+  const id = new ObjectId(req.params.id);
   const post = await postCollection.updateOne(
-    { id: id },
+    { _id: id },
     {
       $set: {
         title: req.body.title,
