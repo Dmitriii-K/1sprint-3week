@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
 import { SETTINGS } from "./settings";
-import { MongoClient } from "mongodb";
 import { deleteRouter } from "./deleteAllData";
 import { blogRouter } from "./blogs/blogRouters";
 import { postRouter } from "./posts/postsRouters";

@@ -12,9 +12,9 @@ export const updateBlogController = async (
   res: Response<BlogViewModel | OutputErrorsType>
 ) => {
   // let updateBlog;
-  id = req.params.id;
+  const id = req.params.id;
   const blog = await blogCollection.updateOne(
-    { id },
+    { id: id },
     {
       $set: {
         name: req.body.name,

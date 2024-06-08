@@ -7,7 +7,7 @@ export const deleteBlogController = async (
   res: Response<any>
 ) => {
   const id = req.params.id;
-  const deleteBlog = await blogCollection.deleteOne({ id });
+  const deleteBlog = await blogCollection.deleteOne({ id: id });
   if (deleteBlog.deletedCount === 1) {
     res.sendStatus(204);
   } else {

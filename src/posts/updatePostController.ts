@@ -5,23 +5,36 @@ import {
   PostViewModel,
 } from "../input-output-types/posts-type";
 import { OutputErrorsType } from "../input-output-types/output-errors-type";
+import { postCollection } from "../db/mongo-db";
 
 export const updatePostController = async (
   req: Request<any, any, PostInputModel>,
   res: Response<PostViewModel | OutputErrorsType>
 ) => {
-  let updatePost;
-  const post = await dbPost.posts.find((p) => p.id === req.params.id);
+  // let updatePost;
+  const id = req.params.id;
+  const post = await postCollection.updateOne(
+    { id: id },
+    {
+      $set: {
+        title: req.body.title,
+        shortDescription: req.body.shortDescription,
+        content: req.body.content,
+        blogId: req.body.blogId,
+      },
+    }
+  );
+  // const post = await dbPost.posts.find((p) => p.id === req.params.id);
   if (!post) {
     res.sendStatus(404);
   } else {
-    updatePost = post;
+    res.sendStatus(204);
+    // updatePost = post;
   }
-  updatePost.title = req.body.title;
-  updatePost.shortDescription = req.body.shortDescription;
-  updatePost.content = req.body.content;
-  updatePost.blogId = req.body.blogId;
-
-  res.sendStatus(204);
+  // updatePost.title = req.body.title;
+  // updatePost.shortDescription = req.body.shortDescription;
+  // updatePost.content = req.body.content;
+  // updatePost.blogId = req.body.blogId;
+  // res.sendStatus(204);
   return;
 };
