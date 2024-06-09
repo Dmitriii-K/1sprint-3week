@@ -1,8 +1,7 @@
 import { Router, Response, Request, NextFunction } from "express";
 import { body, validationResult } from "express-validator";
-import { dbBlog } from "../db/db";
 import { SETTINGS } from "../settings";
-import { postCollection, blogCollection } from "../db/mongo-db";
+import { blogCollection } from "../db/mongo-db";
 import { ObjectId } from "mongodb";
 
 const urlPattern =
@@ -28,7 +27,6 @@ export const blogInputValidation = [
     .isString()
     .withMessage("не строка")
     .trim()
-    // .isURL()
     .matches(urlPattern)
     .withMessage("not url")
     .isLength({ min: 1, max: 100 })

@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { dbBlog } from "../db/db";
 import {
   BlogInputModel,
   BlogViewModel,
@@ -32,7 +31,6 @@ export const createBlogController = async (
       id: nb.insertedId,
     };
 
-    // dbBlog.blogs.push(newBlog);
     res.status(201).json(x);
   } else {
     return;

@@ -8,8 +8,6 @@ export const deleteRouter = Router();
 deleteRouter.delete("/all-data", async (req: Request, res: Response) => {
   await postCollection.drop();
   await blogCollection.drop();
-  // dbPost.posts = [];
-  // dbBlog.blogs = [];
   res.sendStatus(204);
   console.log("All data is deleted");
 });

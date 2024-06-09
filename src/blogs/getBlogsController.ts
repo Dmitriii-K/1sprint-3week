@@ -1,6 +1,4 @@
 import { Request, Response } from "express";
-import { dbBlog } from "../db/db";
-import { OutputErrorsType } from "../input-output-types/output-errors-type";
 import { BlogViewModel, BlogDbType } from "../input-output-types/blogs-type";
 import { blogCollection } from "../db/mongo-db";
 import { WithId } from "mongodb";

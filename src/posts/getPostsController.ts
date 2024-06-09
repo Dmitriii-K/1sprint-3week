@@ -1,6 +1,4 @@
 import { Request, Response } from "express";
-import { dbPost } from "../db/db";
-import { OutputErrorsType } from "../input-output-types/output-errors-type";
 import { PostDbType, PostViewModel } from "../input-output-types/posts-type";
 import { postCollection } from "../db/mongo-db";
 import { WithId } from "mongodb";

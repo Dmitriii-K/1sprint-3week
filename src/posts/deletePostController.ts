@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
-import { dbPost } from "../db/db";
 import { postCollection } from "../db/mongo-db";
-import { WithId, ObjectId } from "mongodb";
+import { ObjectId } from "mongodb";
 
 export const deletePostController = async (
   req: Request,
@@ -14,12 +13,4 @@ export const deletePostController = async (
   } else {
     res.sendStatus(404);
   }
-
-  // const deletePost = await dbPost.posts.filter((p) => p.id !== id);
-  // if (deletePost.length < dbPost.posts.length) {
-  //   dbPost.posts = deletePost;
-  //   res.sendStatus(204);
-  // } else {
-  //   res.sendStatus(404);
-  // }
 };
