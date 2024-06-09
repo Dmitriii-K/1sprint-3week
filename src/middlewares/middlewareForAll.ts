@@ -2,6 +2,8 @@ import { Router, Response, Request, NextFunction } from "express";
 import { body, validationResult } from "express-validator";
 import { dbBlog } from "../db/db";
 import { SETTINGS } from "../settings";
+import { postCollection, blogCollection } from "../db/mongo-db";
+import { ObjectId } from "mongodb";
 
 const urlPattern =
   /^https:\/\/([a-zA-Z0-9_-]+\.)+[a-zA-Z0-9_-]+(\/[a-zA-Z0-9_-]+)*\/?$/;
@@ -57,12 +59,13 @@ export const postInputValidation = [
     .withMessage("Содержание превышает максимальное кол-во символов"),
   body("blogId")
     .isString()
-    .custom((value) => {
-      const blog = dbBlog.blogs.find((blog) => blog.id === value);
+    .custom(async (id) => {
+      const ObtId = new ObjectId(id);
+      const blog = await blogCollection.findOne({ _id: ObtId });
       if (!blog) {
         throw new Error("no blog!");
       }
-      return true;
+      // return true;
     })
     .withMessage(""),
 ];

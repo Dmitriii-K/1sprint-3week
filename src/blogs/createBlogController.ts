@@ -7,6 +7,8 @@ import {
 } from "../input-output-types/blogs-type";
 import { blogCollection } from "../db/mongo-db";
 
+const createDate = new Date().toISOString();
+
 export const createBlogController = async (
   req: Request<any, any, BlogInputModel>,
   res: Response<any>
@@ -16,15 +18,23 @@ export const createBlogController = async (
     name: req.body.name,
     description: req.body.description,
     websiteUrl: req.body.websiteUrl,
-    createdAt: new Date().toISOString(),
+    createdAt: createDate,
     isMembership: false,
   };
   const nb = await blogCollection.insertOne(newBlog);
-  const x = {
-    ...newBlog,
-    id: nb.insertedId,
-  };
+  if (nb) {
+    const x = {
+      name: req.body.name,
+      description: req.body.description,
+      websiteUrl: req.body.websiteUrl,
+      createdAt: createDate,
+      isMembership: false,
+      id: nb.insertedId,
+    };
 
-  // dbBlog.blogs.push(newBlog);
-  res.status(201).json(x);
+    // dbBlog.blogs.push(newBlog);
+    res.status(201).json(x);
+  } else {
+    return;
+  }
 };

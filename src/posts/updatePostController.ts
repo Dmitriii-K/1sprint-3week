@@ -14,24 +14,30 @@ export const updatePostController = async (
 ) => {
   // let updatePost;
   const id = new ObjectId(req.params.id);
-  const post = await postCollection.updateOne(
-    { _id: id },
-    {
-      $set: {
-        title: req.body.title,
-        shortDescription: req.body.shortDescription,
-        content: req.body.content,
-        blogId: req.body.blogId,
-      },
-    }
-  );
-  // const post = await dbPost.posts.find((p) => p.id === req.params.id);
-  if (!post) {
+  const findPost = await postCollection.findOne({ _id: id });
+  if (!findPost) {
     res.sendStatus(404);
   } else {
+    const post = await postCollection.updateOne(
+      { _id: id },
+      {
+        $set: {
+          title: req.body.title,
+          shortDescription: req.body.shortDescription,
+          content: req.body.content,
+          blogId: req.body.blogId,
+        },
+      }
+    );
     res.sendStatus(204);
-    // updatePost = post;
   }
+  // const post = await dbPost.posts.find((p) => p.id === req.params.id);
+  // if (!post) {
+  //   res.sendStatus(404);
+  // } else {
+  //   res.sendStatus(204);
+  //   // updatePost = post;
+  // }
   // updatePost.title = req.body.title;
   // updatePost.shortDescription = req.body.shortDescription;
   // updatePost.content = req.body.content;
