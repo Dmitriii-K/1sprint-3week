@@ -6,12 +6,11 @@ import {
 } from "../input-output-types/blogs-type";
 import { blogCollection } from "../db/mongo-db";
 
-const createDate = new Date().toISOString();
-
 export const createBlogController = async (
   req: Request<any, any, BlogInputModel>,
   res: Response<any>
 ) => {
+  const createDate = new Date().toISOString();
   const newBlog = {
     // id: Date.now().toString(),
     name: req.body.name,
@@ -20,7 +19,7 @@ export const createBlogController = async (
     createdAt: createDate,
     isMembership: false,
   };
-  const nb = await blogCollection.insertOne(newBlog);
+  const nb = await blogCollection.insertOne(newBlog)!;
   if (nb) {
     const x = {
       name: req.body.name,
@@ -33,6 +32,6 @@ export const createBlogController = async (
 
     res.status(201).json(x);
   } else {
-    return;
+    res.sendStatus(500);
   }
 };

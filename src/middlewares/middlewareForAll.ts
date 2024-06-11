@@ -117,3 +117,5 @@ export const authMiddleware = (
 
   next();
 };
+const buff2 = Buffer.from(SETTINGS.ADMIN, "utf8");
+export const codedAuth = buff2.toString("base64");
